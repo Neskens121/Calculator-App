@@ -4,25 +4,25 @@
 	<title></title>
 </head>
 <body>
-<form onsubmit="return calculate()">
-	<input type="button" onclick="showValue(this)"  value="1" name="button1">
-	<input type="button" onclick="showValue(this)"  value="2" name="button2">
-	<input type="button" onclick="showValue(this)"  value="3" name="button3">
-	<input type="button" onclick="showValue(this)"  value="4" name="button4">
-	<input type="button" onclick="showValue(this)"  value="5" name="button5">
-	<input type="button" onclick="showValue(this)"  value="6" name="button6">
-	<input type="button" onclick="showValue(this)"  value="7" name="button7">
-	<input type="button" onclick="showValue(this)"  value="8" name="button8">
-	<input type="button" onclick="showValue(this)"  value="9" name="button9">
-	<input type="button" onclick="showValue(this)"  value="+" name="plusSign">
-	<button type="button" onclick="calculate(this);"></button>
-	<input type="text" name="screen" id="screen">
-</form>
-<script type="text/javascript">
-	function showValue(element) {
-		var calcScreen = document.getElementById('screen');
-		calcScreen.value += (element.value);
-	}
+	<form onsubmit="return calculate()">
+		<input type="button" onclick="showValue(this)"  value="1" name="button1">
+		<input type="button" onclick="showValue(this)"  value="2" name="button2">
+		<input type="button" onclick="showValue(this)"  value="3" name="button3">
+		<input type="button" onclick="showValue(this)"  value="4" name="button4">
+		<input type="button" onclick="showValue(this)"  value="5" name="button5">
+		<input type="button" onclick="showValue(this)"  value="6" name="button6">
+		<input type="button" onclick="showValue(this)"  value="7" name="button7">
+		<input type="button" onclick="showValue(this)"  value="8" name="button8">
+		<input type="button" onclick="showValue(this)"  value="9" name="button9">
+		<input type="button" onclick="showValue(this)"  value="+" name="plusSign">
+		<button type="button" onclick="calculate(this);"></button>
+		<input type="text" name="screen" id="screen">
+	</form>
+	<script type="text/javascript">
+		function showValue(element) {
+			var calcScreen = document.getElementById('screen');
+			calcScreen.value += (element.value);
+		}
 
 
 	function calculate(element) {
@@ -32,6 +32,25 @@
 		console.log(calcScreen.value);
 		//calcScreen.value = 
 		return false;
+	}
+
+	function getToken(stringToParse){
+		var arrOfTokens = [];
+		for (var i = stringToParse.length-1; i >=0; i--) {
+			if(stringToParse[i] === '+'){
+				var tempString = stringToParse.slice(i+1);
+				arrOfTokens.unshift(tempString);
+				arrOfTokens.unshift(stringToParse[i]);
+				stringToParse = stringToParse.substring(0, i);
+				console.log(i);
+			}
+			else {
+				if(i === 0){
+					arrOfTokens.unshift(stringToParse);
+				}
+			}
+		}
+		return arrOfTokens;
 	}
 </script>
 </body>
