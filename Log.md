@@ -17,3 +17,9 @@ Day 3: January 05, 2017
 Today's Progress: Made basic calculator functionality through js eval function, fixed inline event listeners
 Thoughts: Currently stop working on Stroustrup's idea of tokenization.
 Plan for tommorow: improve functionality, eliminate zero on start, operator on the end and double operators
+
+
+Day 4: January 06, 2017
+
+Today's Progress: Replaced form and input elements for simple div and span. Choosed flexbox for layout.
+Plan for tommorow: same as yesterday;
