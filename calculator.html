@@ -2,49 +2,96 @@
 <html>
 <head>
 	<title></title>
-</head>
-<body>
-    <form>
-        <input type="button" class="inpButton" value="0" name="button0">
-        <input type="button" class="inpButton" value="1" name="button1">
-        <input type="button" class="inpButton" value="2" name="button2">
-        <input type="button" class="inpButton" value="3" name="button3">
-        <input type="button" class="inpButton" value="4" name="button4">
-        <input type="button" class="inpButton" value="5" name="button5">
-        <input type="button" class="inpButton" value="6" name="button6">
-        <input type="button" class="inpButton" value="7" name="button7">
-        <input type="button" class="inpButton" value="8" name="button8">
-        <input type="button" class="inpButton" value="9" name="button9">
-        <input type="button" class="inpButton" value="+" name="plusSign">
-        <input type="button" class="inpButton" value="." name="dotSign">
-        <input type="button" class="inpButton" value="-" name="minusSign">
-        <input type="button" class="inpButton" value="x" name="timesSign">
-        <input type="button" class="inpButton" value="&divide" name="divisionSign">
-        <button type="button" id='calcButton'>=</button>
-        <input type="text" name="screen" id="screen">
-    </form>
-	<script type="text/javascript">
-        //SELECT ELEMENTS
-        var inputElements = document.querySelectorAll('.inpButton');
-        var calcButton = document.getElementById('calcButton');
-        var calcScreen = document.getElementById('screen');
+    <style>
+        *{
+            box-sizing: border-box;
+            border: solid;
+        }
         
-        //ADD ADDEVENTLISTENER for INPUT ELEMENTS 
+        .top {
+            display: flex;
+            flex-wrap: wrap;
+            flex: 0 1 100%;
+        }
+        
+        .clear {
+            display:flex;
+            flex: 0 1 25%;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .screen {
+            display:flex;
+            flex: 0 1 75%;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .keys {
+            display: flex;
+            flex-wrap: wrap;
+            flex: 0 1 100%;
+        }
+        .keys span {
+            display:flex;
+            flex: 0 1 25%;
+            justify-content: center;
+            align-items: center;
+        }
+    
+    </style>
+</head>
+    <body>
+    <div id="calculator">
+        <div class="top">
+            <span class="clear">C</span>
+            <div class="screen" id="calcScreen"></div>
+        </div>
+        
+        <div class="keys">
+            <span class="inpButton" id="firstSpan">7</span>
+            <span class="inpButton">8</span>
+            <span class="inpButton" value="8">9</span>
+            <span class="inpButton operator">+</span>
+            <span class="inpButton">4</span>
+            <span class="inpButton">5</span>
+            <span class="inpButton">6</span>
+            <span class="inpButton operator">-</span>
+            <span class="inpButton">1</span>
+            <span class="inpButton">2</span>
+            <span class="inpButton">3</span>
+            <span class="inpButton operator">÷</span>
+            <span class="inpButton">0</span>
+            <span class="inpButton">.</span>
+            <span class="eval" id="calcButton">=</span>
+            <span class="inpButton operator">x</span>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        //SELECT ELEMENTS
+        var inputElements = document.getElementsByClassName('inpButton');
+        var calcButton = document.getElementById('calcButton');
+        var calcScreen = document.getElementById('calcScreen');
+        
+        //ADD EVENTLISTENER for INPUT ELEMENTS 
         for(var i = 0; i < inputElements.length ; i++){
             inputElements[i].addEventListener('click', showValue);
         }
-        //ADD ADDEVENTLISTENER for EQUAl SIGN 
+        //ADD EVENTLISTENER for EQUAl SIGN 
         calcButton.addEventListener('click', calculate);
         
         
 		function showValue() {
-            calcScreen.value += (this.value);
+            console.log(this.textContent);
+            calcScreen.textContent += (this.textContent);
 		}
 
 
         function calculate() {
-            var result = calcScreen.value.replace(/x/g, '*').replace(/÷/g, '/');
-            calcScreen.value = eval(result);
+            var result = calcScreen.textContent.replace(/x/g, '*').replace(/÷/g, '/');
+            calcScreen.textContent = eval(result);
             console.log(eval(result));
         }
 
@@ -67,6 +114,7 @@
             return arrOfTokens;
         }
 </script>
+    
+	
 </body>
-</html>
 </html>
