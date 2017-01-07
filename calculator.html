@@ -45,8 +45,8 @@
     <body>
     <div id="calculator">
         <div class="top">
-            <span class="clear">C</span>
-            <div class="screen" id="calcScreen"></div>
+            <span class="clear" id="clearButt">C</span>
+            <div class="screen" id="calcScreen">0</div>
         </div>
         
         <div class="keys">
@@ -73,6 +73,7 @@
         //SELECT ELEMENTS
         var inputElements = document.getElementsByClassName('inpButton');
         var calcButton = document.getElementById('calcButton');
+        var clearButton = document.getElementById('clearButt');
         var calcScreen = document.getElementById('calcScreen');
         
         //ADD EVENTLISTENER for INPUT ELEMENTS 
@@ -82,11 +83,21 @@
         //ADD EVENTLISTENER for EQUAl SIGN 
         calcButton.addEventListener('click', calculate);
         
+        //ADD EVENTLISTENER for CLEAR SIGN 
+        clearButton.addEventListener('click', clearScreen);
         
 		function showValue() {
-            console.log(this.textContent);
-            calcScreen.textContent += (this.textContent);
+            if(isNaN(parseInt(calcScreen.textContent.slice(-1))) && isNaN(this.textContent)){
+                return;
+            } else if((calcScreen.textContent.length === 1 && calcScreen.textContent === '0')){
+                calcScreen.textContent = this.textContent;
+            }
+            else {calcScreen.textContent += (this.textContent);}
 		}
+        
+        function clearScreen () {
+            calcScreen.textContent = '0';
+        }
 
 
         function calculate() {
@@ -94,7 +105,7 @@
             calcScreen.textContent = eval(result);
             console.log(eval(result));
         }
-
+        
         function getToken(stringToParse){
             var arrOfTokens = [];
             for (var i = stringToParse.length-1; i >=0; i--) {

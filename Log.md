@@ -23,3 +23,9 @@ Day 4: January 06, 2017
 
 Today's Progress: Replaced form and input elements for simple div and span. Choosed flexbox for layout.
 Plan for tommorow: same as yesterday;
+
+
+Day 5: January 07, 2017
+
+Today's Progress: improved functionality, eliminate zero on start and double operators
+Plan for tommorow: fix operator on the end, improve appearance of calc
