@@ -29,3 +29,10 @@ Day 5: January 07, 2017
 
 Today's Progress: improved functionality, eliminate zero on start and double operators
 Plan for tommorow: fix operator on the end, improve appearance of calc
+
+
+Day 6: January 08, 2017
+
+Today's Progress: added two audio elements and apropriate event listeners to activate them when button get clicked
+Plan for tommorow: fix operator on the end, improve appearance of calc
+Thoughts: change that awful/tests/ sounds and hide audio elements

@@ -69,6 +69,9 @@
         </div>
     </div>
 
+    <audio src="Beep-SoundBible.wav" controls></audio>
+    <audio src="Typing On Computer Keyboard.wav" controls></audio>
+
     <script type="text/javascript">
         //SELECT ELEMENTS
         var inputElements = document.getElementsByClassName('inpButton');
@@ -79,12 +82,20 @@
         //ADD EVENTLISTENER for INPUT ELEMENTS 
         for(var i = 0; i < inputElements.length ; i++){
             inputElements[i].addEventListener('click', showValue);
+            inputElements[i].addEventListener('click', playSound);
         }
         //ADD EVENTLISTENER for EQUAl SIGN 
         calcButton.addEventListener('click', calculate);
         
         //ADD EVENTLISTENER for CLEAR SIGN 
         clearButton.addEventListener('click', clearScreen);
+
+
+        function playSound() {
+        	const audioElement = document.getElementsByTagName('audio');
+        	audioElement[1].currentTime = 0;
+        	audioElement[1].play();
+        }
         
 		function showValue() {
             if(isNaN(parseInt(calcScreen.textContent.slice(-1))) && isNaN(this.textContent)){
