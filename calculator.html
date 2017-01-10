@@ -2,87 +2,152 @@
 <html>
 <head>
 	<title></title>
-    <style>
-        *{
-            box-sizing: border-box;
-            border: solid;
-        }
-        
-        .top {
-            display: flex;
-            flex-wrap: wrap;
-            flex: 0 1 100%;
-        }
-        
-        .clear {
-            display:flex;
-            flex: 0 1 25%;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .screen {
-            display:flex;
-            flex: 0 1 75%;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .keys {
-            display: flex;
-            flex-wrap: wrap;
-            flex: 0 1 100%;
-        }
-        .keys span {
-            display:flex;
-            flex: 0 1 25%;
-            justify-content: center;
-            align-items: center;
-        }
-    
-    </style>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		*{
+			box-sizing: border-box;
+			
+		}
+
+		div { cursor: pointer; cursor: hand; }
+
+		html, body {
+			height: 100%;
+			box-sizing: border-box;
+		}
+
+		#calculator {
+			height: 410px;
+			width: 300px;
+			margin-top: 10%;
+			margin-left: auto;
+			margin-right: auto;
+			background-color: #cccce5;
+			border: 2px solid #334d4d;
+			border-radius: 20px;
+			box-shadow: 7px 10px 34px 1px rgba(0, 0, 0, 0.68), inset -1px -6px 12px 0.1px #89847e;
+
+		}
+		section {
+			
+			max-width: 300px;
+			margin: 0 auto;
+			display: flex;
+			align-items: center;
+			font-weight: bold;
+			color: #fff;
+		}
+
+		.column {
+			margin: 10px;
+			height: 40px;
+			flex-grow: 1;
+			flex-shrink: 1;
+			flex-basis: 0;
+			border-radius: 8px;
+			background-color: #000033;
+			box-shadow: 0px 3px 0px 0px #222121, inset -1px -3px 10px 1px #515151;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			text-align: center;
+		}
+
+		.column:active {
+			transform: translate(0px, 3px);
+			box-shadow: none;
+		}
+
+
+		.operator {
+			font-size: 14px;
+			background-color: #666699;
+			box-shadow: 0px 3px 0px 0px #222121, inset -1px -3px 10px 1px #515151;
+		}
+
+		#clearButt {
+			font-size: 14px;
+			background-color: #8a0707;
+			box-shadow: 0px 3px 0px 0px #671c2a;
+		}
+
+		section:first-of-type .column:last-of-type {
+			flex-grow: 3;
+			flex-shrink: 3;
+			flex-basis: 58px;
+		}
+
+		#entrybox {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-content: flex-end;
+		}
+		audio {
+			display: none;
+		}
+		#entry {
+			
+		}
+
+
+	</style>
 </head>
-    <body>
-    <div id="calculator">
-        <div class="top">
-            <span class="clear" id="clearButt">C</span>
-            <div class="screen" id="calcScreen">0</div>
-        </div>
-        
-        <div class="keys">
-            <span class="inpButton" id="firstSpan">7</span>
-            <span class="inpButton">8</span>
-            <span class="inpButton" value="8">9</span>
-            <span class="inpButton operator">+</span>
-            <span class="inpButton">4</span>
-            <span class="inpButton">5</span>
-            <span class="inpButton">6</span>
-            <span class="inpButton operator">-</span>
-            <span class="inpButton">1</span>
-            <span class="inpButton">2</span>
-            <span class="inpButton">3</span>
-            <span class="inpButton operator">÷</span>
-            <span class="inpButton">0</span>
-            <span class="inpButton">.</span>
-            <span class="eval" id="calcButton">=</span>
-            <span class="inpButton operator">x</span>
-        </div>
-    </div>
+<body>
 
-    <audio src="Beep-SoundBible.wav" controls></audio>
-    <audio src="Typing On Computer Keyboard.wav" controls></audio>
 
-    <script type="text/javascript">
+	<div id="calculator">
+
+		<div id='title' class='text-center'>
+			<h5><b>ELECTRONIC CALCULATOR</b></h5>
+		</div>
+		<section>
+			<div class="column" id="clearButt">C</div>
+			<div id='entrybox' class='column'>
+				<div id='calcScreen'>0</div>
+				<div id='history'>0</div>
+			</div>
+		</section>
+		<section>
+			<div class="column">7</div>
+			<div class="column">8</div>
+			<div class="column">9</div>
+			<div class="column operator">+</div>
+		</section>
+		<section>
+			<div class="column">4</div>
+			<div class="column">5</div>
+			<div class="column">6</div>
+			<div class="column operator">-</div>
+		</section>
+		<section>
+			<div class="column">1</div>
+			<div class="column">2</div>
+			<div class="column">3</div>
+			<div class="column operator">÷</div>
+		</section>
+		<section>
+			<div class="column">0</div>
+			<div class="column">.</div>
+			<div class="column operator" id="calcButton">=</div>
+			<div class="column operator">x</div>
+		</section>
+	</div>
+
+<audio src="Beep-SoundBible.wav" controls></audio>
+<audio src="Typing-On-Computer-Keyboard.wav" controls></audio>
+
+<script type="text/javascript">
         //SELECT ELEMENTS
-        var inputElements = document.getElementsByClassName('inpButton');
+        var inputElements = document.getElementsByClassName('column');
         var calcButton = document.getElementById('calcButton');
         var clearButton = document.getElementById('clearButt');
         var calcScreen = document.getElementById('calcScreen');
         
         //ADD EVENTLISTENER for INPUT ELEMENTS 
         for(var i = 0; i < inputElements.length ; i++){
-            inputElements[i].addEventListener('click', showValue);
-            inputElements[i].addEventListener('click', playSound);
+        	inputElements[i].addEventListener('click', showValue);
+        	inputElements[i].addEventListener('click', playSound);
         }
         //ADD EVENTLISTENER for EQUAl SIGN 
         calcButton.addEventListener('click', calculate);
@@ -93,50 +158,54 @@
 
         function playSound() {
         	const audioElement = document.getElementsByTagName('audio');
-        	audioElement[1].currentTime = 0;
-        	audioElement[1].play();
+        	audioElement[0].currentTime = 0;
+        	audioElement[0].play();
         }
         
-		function showValue() {
-            if(isNaN(parseInt(calcScreen.textContent.slice(-1))) && isNaN(this.textContent)){
-                return;
-            } else if((calcScreen.textContent.length === 1 && calcScreen.textContent === '0')){
-                calcScreen.textContent = this.textContent;
-            }
-            else {calcScreen.textContent += (this.textContent);}
-		}
+        function showValue() {
+console.log(this.textContent);
+        	if(this.textContent === '=' || this.textContent === 'C'){return;}
+        	if(isNaN(parseInt(calcScreen.textContent.slice(-1))) && isNaN(this.textContent)){
+        		return;
+        	} else if((calcScreen.textContent.length === 1 && calcScreen.textContent === '0')){
+        		calcScreen.textContent = this.textContent;
+        	}
+        	else {calcScreen.textContent += (this.textContent);}
+        }
         
         function clearScreen () {
-            calcScreen.textContent = '0';
+        	calcScreen.textContent = '0';
         }
 
 
         function calculate() {
-            var result = calcScreen.textContent.replace(/x/g, '*').replace(/÷/g, '/');
-            calcScreen.textContent = eval(result);
-            console.log(eval(result));
+        	console.log(calcScreen.textContent);
+        	var result = calcScreen.textContent.replace(/x/g, '*').replace(/÷/g, '/');
+        	console.log(calcScreen.textContent);
+        	calcScreen.textContent = eval(result);
+        	console.log(eval(result));
         }
         
         function getToken(stringToParse){
-            var arrOfTokens = [];
-            for (var i = stringToParse.length-1; i >=0; i--) {
-                if(stringToParse[i] === '+'){
-                    var tempString = stringToParse.slice(i+1);
-                    arrOfTokens.unshift(tempString);
-                    arrOfTokens.unshift(stringToParse[i]);
-                    stringToParse = stringToParse.substring(0, i);
-                    console.log(i);
-                }
-                else {
-                    if(i === 0){
-                        arrOfTokens.unshift(stringToParse);
-                    }
-                }
-            }
-            return arrOfTokens;
+        	var arrOfTokens = [];
+        	for (var i = stringToParse.length-1; i >=0; i--) {
+        		if(stringToParse[i] === '+'){
+        			var tempString = stringToParse.slice(i+1);
+        			arrOfTokens.unshift(tempString);
+        			arrOfTokens.unshift(stringToParse[i]);
+        			stringToParse = stringToParse.substring(0, i);
+        			console.log(i);
+        		}
+        		else {
+        			if(i === 0){
+        				arrOfTokens.unshift(stringToParse);
+        			}
+        		}
+        	}
+        	return arrOfTokens;
         }
-</script>
+    </script>
     
-	
+
 </body>
 </html>

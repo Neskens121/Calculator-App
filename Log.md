@@ -36,3 +36,10 @@ Day 6: January 08, 2017
 Today's Progress: added two audio elements and apropriate event listeners to activate them when button get clicked
 Plan for tommorow: fix operator on the end, improve appearance of calc
 Thoughts: change that awful/tests/ sounds and hide audio elements
+
+
+Day 7: January 10, 2017
+
+Today's Progress: working on appearance of calc
+Plan for tommorow: fix operator on the end, improve appearance of calc, working on screen of calc
+Thoughts: change that awful/tests/ sounds
