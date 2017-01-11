@@ -186,24 +186,6 @@ console.log(this.textContent);
         	console.log(eval(result));
         }
         
-        function getToken(stringToParse){
-        	var arrOfTokens = [];
-        	for (var i = stringToParse.length-1; i >=0; i--) {
-        		if(stringToParse[i] === '+'){
-        			var tempString = stringToParse.slice(i+1);
-        			arrOfTokens.unshift(tempString);
-        			arrOfTokens.unshift(stringToParse[i]);
-        			stringToParse = stringToParse.substring(0, i);
-        			console.log(i);
-        		}
-        		else {
-        			if(i === 0){
-        				arrOfTokens.unshift(stringToParse);
-        			}
-        		}
-        	}
-        	return arrOfTokens;
-        }
     </script>
     
 

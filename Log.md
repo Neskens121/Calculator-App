@@ -43,3 +43,9 @@ Day 7: January 10, 2017
 Today's Progress: working on appearance of calc
 Plan for tommorow: fix operator on the end, improve appearance of calc, working on screen of calc
 Thoughts: change that awful/tests/ sounds
+
+
+Day : January 11, 2017
+
+Today's Progress: trying to refactor app code
+Plan for tommorow: improve appearance of calc
